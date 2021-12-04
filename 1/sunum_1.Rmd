@@ -3,9 +3,8 @@ title: "Parametrik Olmayan İstatistiksel Yöntemler Ödevi"
 author: "Ramazan Erduran, İlkay Şafak Baytar"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 
@@ -19,14 +18,14 @@ library(pastecs)
 library(plyr)
 library(readxl)
 
-gapminder_tsv <- read_table2("C:/Users/lenovo/Desktop/Data_Camp/gapminder.tsv.txt")
+gapminder_tsv <- read_table2("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gapminder.tsv.txt")
 
-gp_eu_x <- read_excel("C:/Users/lenovo/Desktop/Hworks/non_par/Bağımsız/gp_eu_x.xlsx")
+gp_eu_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gp_eu_x.xlsx")
 View(gp_eu_x)
 
-gp_asia_x <- read_excel("C:/Users/lenovo/Desktop/Hworks/non_par/Bağımsız/gp_asia_x.xlsx")
+gp_asia_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gp_asia_x.xlsx")
 
-gp_usa_x <- read_excel("C:/Users/lenovo/Desktop/Hworks/non_par/Bağımsız/gp_usa_x.xlsx")
+gp_usa_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gp_usa_x.xlsx")
 
 ```
 
