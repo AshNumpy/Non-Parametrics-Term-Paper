@@ -9,7 +9,6 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(dplyr)
 library(readr)
@@ -32,7 +31,7 @@ gp_usa_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gp_usa_x.xlsx"
 
 ### (1) Bağımsız veri setine ilişkin inceleme:
 
-  Verilerin alındığı kaynak olarak [Datacamp](datacamp.com) seçildi.
+  Verilerin çekilirken kaynak olarak [Datacamp](datacamp.com) seçildi.
 İlk olarak veriler `gapminder_tsv` beklenen ömür değişkeni ile filtrelendi `gapminder_lifeExp`.
 
   Daha sonra bu filtreler üç ülkeye **Europe**, **Americas**, **Asia** bölündü ki daha rahat ve temiz analiz yapabilelim. 
