@@ -19,10 +19,11 @@ petal_x <- read_excel("setosa_petal_x.xlsx")
 
 ```
 
-## (2) Bağımlı veri setine ilişkin inceleme:
+### (2) Bağımlı veri setine ilişkin inceleme:
+
   Verilerin çekilirken kaynak olarak [Datacamp](datacamp.com) seçildi. Veri setimizin açıklamasıyla başlayalım. Asıl kitlemiz, **Setosa**, **Versicolor** ve **Virginica** çiçek türlerinin sepal (Çanak yaprak) ve petal (Taç yaprak) verilerini içermekte idi. Biz bu verilerden **Setosa** çiçek türüne ait verileri kullandık.
   
-  İlk olarak veriler `iris` **setosa** değişkeni ile filtrelendi `iris_setosa`. Devamında ise **petal hacmi** hesaplanıp, **sepal uzunluğu** ve **sepal kalınlığı** ile incelenecek olan 3 bağımlı değişken olarak kabul edildi.
+  İlk olarak veriler (`iris`), **setosa** değişkeni ile filtrelendi `iris_setosa`. Devamında ise **petal hacmi** hesaplanıp, **sepal uzunluğu** ve **sepal kalınlığı** ile incelenecek olan 3 bağımlı değişken olarak kabul edildi.
 
 ```{r iris_setosa, echo=T}
 iris_setosa <- iris %>%
@@ -33,19 +34,20 @@ head(iris_setosa)
 
 ```
 
-## Örneklem çekme:
+### Örneklem çekme:
   Veri setimizden n=30 adet örneklem çektik (`setosa_samp`). `setosa_samp` setimizin özetleyici istatistiklerini bulduk. 
 
 ```{r setosa_samp, echo=T}
-setosa_sepal_width_samp <- as.data.frame(list(sample(setosa_samp$sepal_width,30,replace=F)))
+
+setosa_sepal_width_samp <- as.data.frame(list(sample(iris_setosa$sepal_width,30,replace=F)))
 colnames(setosa_sepal_width_samp) <- c("sepal_width")
     write_xlsx(setosa_sepal_width_samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_width_x.xlsx")
     
-setosa_sepal_length_samp <- as.data.frame(list(sample(setosa_samp$sepal_length,20,replace=F)))
+setosa_sepal_length_samp <- as.data.frame(list(sample(iris_setosa$sepal_length,20,replace=F)))
 colnames(setosa_sepal_length_samp) <- c("sepal_length")
   write_xlsx(setosa_sepal_length_samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_length_x.xlsx")
 
-setosa_petal_Samp <- as.data.frame(list(sample(setosa_samp$petal_volume,30,replace=F)))
+setosa_petal_Samp <- as.data.frame(list(sample(iris_setosa$petal_volume,30,replace=F)))
 colnames(setosa_petal_Samp) <- c("petal_volume")
     write_xlsx(setosa_petal_Samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_petal_x.xlsx")
 #Sepal kalınlığına ait özetleyici istatistikler:
@@ -56,7 +58,7 @@ stat.desc(setosa_sepal_length_samp)
 stat.desc(setosa_petal_Samp)
 ```
 
-## Normallik avrsayımı testi:
+### Normallik avrsayımı testi:
 
   verilerimizdeki örneklemler (n<50) için normallik varsayım testi yaparken **Shapiro Wilk** testi kullanılır.
 Normallik varsayımında ise:
