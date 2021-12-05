@@ -24,10 +24,10 @@ head(gp_usa_x)
 
 ### Hipotezler ve Wilcoxon testi:
 
-Amerika kıtasının ülkelerinin beklenen ortalama ömür ortalamasına Wilcoxon işaret uygulandı:
-  \n H0:Q = 50
-  \n Hs:Q > 50
-  \n Alpha = 0.05
+Amerika kıtasının ülkelerinin beklenen ortalama ömür ortalamasına Wilcoxon işaret uygulandı:  
+  \n H0:Q = 50  
+  \n Hs:Q > 50  
+  \n Alpha = 0.05  
 
 ```{r pressure, echo=FALSE}
 wilcox.test(gp_usa_x$lifeExp, mu=50, alternative="greater", exact=TRUE)
