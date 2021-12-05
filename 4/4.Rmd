@@ -1,0 +1,47 @@
+---
+title: "Parametrik olmayan istatistiksel yöntemler ödevi (4)"
+author: "Ramazan Erduran, İlkay Şafak Baytar"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Açıklama:
+
+  Rastgele seçilen 30 ülkeden alınan beklenen ömür `lifeExp` değerlerine ilişkin inceleme yapıldı.
+  
+```{r cars}
+library(readxl)
+library(stats)
+gp_asia_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/gp_datasets/gp_asia_x.xlsx")
+head(gp_asia_x)
+
+gp_eu_x<- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/gp_datasets/gp_eu_x.xlsx")
+head(gp_eu_x)
+```
+
+### Hipotezler ve testin uygulanması:
+
+  **Asya** ve **Avrupa** 'daki ülkelerin verileri göz önüne alındığında Avrupa'nın beklenen ömür değerinin daha düşük olduğu iddiası öne sürüldü.
+  Bu iddianın testine ilişkin kurulan:  
+\n H0: Q~Avrupa~ = Q~Asya~  
+\n Hs: Q~Avrupa~ < Q~Asya~  
+\n Alpha = 0.05  
+\n için **Mann Whitney Testi** uygulanarak sonuçlar incelendi.
+
+```{r pressure, echo=FALSE}
+wilcox.test(gp_eu_x$lifeExp,gp_asia_x$lifeExp,alternative = "less", paired=F, conf.level = 0.95)
+```
+
+### Test sonucu ve yorumlama kısmı:
+
+  Mann Whitney test sonucu olarak:\n
+U değeri = 701\n
+P değeri = 0.9999\n 
+
+  %95 Güven düzeyiyle söylenebilir ki, p-value < alpha=0.05 için H0 reddedilir. Yani **Asya** 'nın beklenen ömrü **Avrupa** 'nın beklenen ömründen daha fazladır.
