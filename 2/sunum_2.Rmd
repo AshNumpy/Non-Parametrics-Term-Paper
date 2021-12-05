@@ -1,5 +1,5 @@
 ---
-title: "Parametrik olmayan istatistiksel yöntemler ödev (2)"
+title: "Parametrik olmayan istatistiksel yöntemler ödevi (2)"
 author: "Ramazan Erduran, İlkay Şafak Baytar"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
@@ -41,15 +41,13 @@ head(iris_setosa)
 
 setosa_sepal_width_samp <- as.data.frame(list(sample(iris_setosa$sepal_width,30,replace=F)))
 colnames(setosa_sepal_width_samp) <- c("sepal_width")
-    write_xlsx(setosa_sepal_width_samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_width_x.xlsx")
-    
+
 setosa_sepal_length_samp <- as.data.frame(list(sample(iris_setosa$sepal_length,20,replace=F)))
 colnames(setosa_sepal_length_samp) <- c("sepal_length")
-  write_xlsx(setosa_sepal_length_samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_length_x.xlsx")
-
+  
 setosa_petal_Samp <- as.data.frame(list(sample(iris_setosa$petal_volume,30,replace=F)))
 colnames(setosa_petal_Samp) <- c("petal_volume")
-    write_xlsx(setosa_petal_Samp,"C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_petal_x.xlsx")
+
 #Sepal kalınlığına ait özetleyici istatistikler:
 stat.desc(setosa_sepal_width_samp)
 #Sepal uzunluğuna ait özetleyici istatistikler:
@@ -81,4 +79,3 @@ shapiro.test(petal_x$petal_volume)
  Sepal uzunluğu verilerinin p-value değeri < alpha=0.05 olduğu için normal dağılımla uyuşmadığı %95 güven düzeyiyle söylenebilir.
  
  Petal Hacmi verilerinin p-value değeri < alpha=0.05 olduğu için normal dağılımla uyuşmadığı %95 güven düzeyiyle söylenebilir.
- 

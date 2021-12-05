@@ -166,7 +166,7 @@ pre code {
 
 <h1 class="title toc-ignore">Parametrik olmayan istatistiksel yöntemler ödev (2)</h1>
 <h4 class="author">Ramazan Erduran, İlkay Şafak Baytar</h4>
-<h4 class="date">04 Aralık 2021</h4>
+<h4 class="date">05 Aralık 2021</h4>
 
 </div>
 
@@ -192,66 +192,64 @@ head(iris_setosa)</code></pre>
 <p>Veri setimizden n=30 adet örneklem çektik (<code>setosa_samp</code>). <code>setosa_samp</code> setimizin özetleyici istatistiklerini bulduk.</p>
 <pre class="r"><code>setosa_sepal_width_samp &lt;- as.data.frame(list(sample(iris_setosa$sepal_width,30,replace=F)))
 colnames(setosa_sepal_width_samp) &lt;- c(&quot;sepal_width&quot;)
-    write_xlsx(setosa_sepal_width_samp,&quot;C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_width_x.xlsx&quot;)
-    
+
 setosa_sepal_length_samp &lt;- as.data.frame(list(sample(iris_setosa$sepal_length,20,replace=F)))
 colnames(setosa_sepal_length_samp) &lt;- c(&quot;sepal_length&quot;)
-  write_xlsx(setosa_sepal_length_samp,&quot;C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_sepal_length_x.xlsx&quot;)
-
+  
 setosa_petal_Samp &lt;- as.data.frame(list(sample(iris_setosa$petal_volume,30,replace=F)))
 colnames(setosa_petal_Samp) &lt;- c(&quot;petal_volume&quot;)
-    write_xlsx(setosa_petal_Samp,&quot;C:/Users/lenovo/Documents/GitHub/Nonpar/2/setosa_petal_x.xlsx&quot;)
+
 #Sepal kalınlığına ait özetleyici istatistikler:
 stat.desc(setosa_sepal_width_samp)</code></pre>
 <pre><code>##              sepal_width
-## nbr.val      30.00000000
-## nbr.null      0.00000000
-## nbr.na        0.00000000
-## min           2.30000000
-## max           3.90000000
-## range         1.60000000
-## sum          99.30000000
-## median        3.35000000
-## mean          3.31000000
-## SE.mean       0.06294497
-## CI.mean.0.95  0.12873691
-## var           0.11886207
-## std.dev       0.34476379
-## coef.var      0.10415824</code></pre>
+## nbr.val       30.0000000
+## nbr.null       0.0000000
+## nbr.na         0.0000000
+## min            2.3000000
+## max            4.4000000
+## range          2.1000000
+## sum          103.7000000
+## median         3.4000000
+## mean           3.4566667
+## SE.mean        0.0800407
+## CI.mean.0.95   0.1637016
+## var            0.1921954
+## std.dev        0.4384010
+## coef.var       0.1268277</code></pre>
 <pre class="r"><code>#Sepal uzunluğuna ait özetleyici istatistikler:
 stat.desc(setosa_sepal_length_samp)</code></pre>
 <pre><code>##              sepal_length
 ## nbr.val       20.00000000
 ## nbr.null       0.00000000
 ## nbr.na         0.00000000
-## min            4.30000000
+## min            4.40000000
 ## max            5.70000000
-## range          1.40000000
-## sum           98.80000000
+## range          1.30000000
+## sum           99.90000000
 ## median         5.00000000
-## mean           4.94000000
-## SE.mean        0.09014608
-## CI.mean.0.95   0.18867791
-## var            0.16252632
-## std.dev        0.40314553
-## coef.var       0.08160841</code></pre>
+## mean           4.99500000
+## SE.mean        0.08286800
+## CI.mean.0.95   0.17344472
+## var            0.13734211
+## std.dev        0.37059696
+## coef.var       0.07419359</code></pre>
 <pre class="r"><code>#Petal hacmine ait özetleyici istatistikler:
 stat.desc(setosa_petal_Samp)</code></pre>
 <pre><code>##              petal_volume
 ## nbr.val       30.00000000
 ## nbr.null       0.00000000
 ## nbr.na         0.00000000
-## min            0.14000000
-## max            0.96000000
-## range          0.82000000
-## sum           11.37000000
+## min            0.11000000
+## max            0.85000000
+## range          0.74000000
+## sum           10.76000000
 ## median         0.30000000
-## mean           0.37900000
-## SE.mean        0.03785438
-## CI.mean.0.95   0.07742090
-## var            0.04298862
-## std.dev        0.20733697
-## coef.var       0.54706326</code></pre>
+## mean           0.35866667
+## SE.mean        0.02986842
+## CI.mean.0.95   0.06108778
+## var            0.02676368
+## std.dev        0.16359608
+## coef.var       0.45612291</code></pre>
 </div>
 <div id="normallik-avrsayımı-testi" class="section level3">
 <h3>Normallik avrsayımı testi:</h3>
@@ -262,21 +260,21 @@ shapiro.test(sepal_width_x$sepal_width)</code></pre>
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  sepal_width_x$sepal_width
-## W = 0.97238, p-value = 0.6062</code></pre>
+## W = 0.9265, p-value = 0.03966</code></pre>
 <pre class="r"><code>#Sepal uzunluğu verilerinin dağılım testi:
 shapiro.test(sepal_length_x$sepal_length)</code></pre>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  sepal_length_x$sepal_length
-## W = 0.95438, p-value = 0.4384</code></pre>
+## W = 0.86205, p-value = 0.008541</code></pre>
 <pre class="r"><code>#Petal hacmi verilerinin dağılım testi:
 shapiro.test(petal_x$petal_volume)</code></pre>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  petal_x$petal_volume
-## W = 0.84012, p-value = 0.0003877</code></pre>
+## W = 0.7886, p-value = 4.092e-05</code></pre>
 <p>Shapiro Wilk testi sonucu p-value değerleri alpha=0.05 ile karşılaştırılarak hipotezler hakkında karar verilir:</p>
 <p>Sepal kalınlığı verilerinin p-value değeri &lt; alpha=0.05 olduğu için normal dağılımla uyuşmadığı %95 güven düzeyiyle söylenebilir.</p>
 <p>Sepal uzunluğu verilerinin p-value değeri &lt; alpha=0.05 olduğu için normal dağılımla uyuşmadığı %95 güven düzeyiyle söylenebilir.</p>
