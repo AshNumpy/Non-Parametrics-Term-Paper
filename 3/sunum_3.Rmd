@@ -1,0 +1,39 @@
+---
+title: "Parametrik olmayan istatistiksel yöntemler ödevi (3)"
+author: "Ramazan Erduran, İlkay Şafak Baytar"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### İncelenecek verinin açıklanması:
+
+  Ödevin 1. kısmında elde edilen `gapminder_tsv` verisinden testi yapılmak üzere **Americas**'ya ait veriler çekildi.
+  **Americas** verileri numeric (n=**30**) olup, o kıtadaki ülkelere göre ortalama beklenen ömür değerlerini içermektedir.
+
+```{r cars}
+library(readxl)
+library(stats)
+
+gp_usa_x <- read_excel("C:/Users/lenovo/Desktop/Hworks/non_par/1/gp_usa_x.xlsx")
+head(gp_usa_x)
+```
+
+### Hipotezler ve Wilcoxon testi:
+
+Amerika kıtasının ülkelerinin beklenen ortalama ömür ortalamasına Wilcoxon işaret uygulandı:
+  \n H0:Q = 50
+  \n Hs:Q > 50
+  \n Alpha = 0.05
+
+```{r pressure, echo=FALSE}
+wilcox.test(gp_usa_x$lifeExp, mu=50, alternative="greater", exact=TRUE)
+```
+
+### Sonuç yorumu:
+
+  **Americas** Verilerinin ortalamalarına ilişkin kurulan hipotez testlerinin sonucu olarak:
+Verilerin ortalamalarının 50'den büyük olduğu Wilcoxon işaret testi sonucu olan **p-value < alpha=0.05** den yararlanılarak %95 güvenle söylenebilir.
