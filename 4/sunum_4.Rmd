@@ -10,7 +10,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+# 4:
 ### Açıklama:
 
   Rastgele seçilen 30 ülkeden alınan beklenen ömür `lifeExp` değerlerine ilişkin inceleme yapıldı.
@@ -29,10 +29,10 @@ head(gp_eu_x)
 
   **Asya** ve **Avrupa** 'daki ülkelerin verileri göz önüne alındığında Avrupa'nın beklenen ömür değerinin daha düşük olduğu iddiası öne sürüldü.
   Bu iddianın testine ilişkin kurulan:  
-\n H0: Q~Avrupa~ = Q~Asya~  
-\n Hs: Q~Avrupa~ < Q~Asya~  
-\n Alpha = 0.05  
-\n için **Mann Whitney Testi** uygulanarak sonuçlar incelendi.
+ H0: Q~Avrupa~ = Q~Asya~  
+ Hs: Q~Avrupa~ < Q~Asya~  
+ Alpha = 0.05  
+ için **Mann Whitney Testi** uygulanarak sonuçlar incelendi.
 
 ```{r pressure, echo=FALSE}
 wilcox.test(gp_eu_x$lifeExp,gp_asia_x$lifeExp,alternative = "less", paired=F, conf.level = 0.95)
