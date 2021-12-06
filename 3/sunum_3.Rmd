@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+# 3:
 ### İncelenecek verinin açıklanması:
 
   Ödevin 1. kısmında elde edilen `gapminder_tsv` verisinden testi yapılmak üzere **Americas**'ya ait veriler çekildi.
