@@ -4,7 +4,6 @@ author: "Ramazan Erduran, İlkay Şafak Baytar"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   html_document: default
-  pdf_document: default
 ---
 
 
@@ -28,8 +27,8 @@ gp_usa_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/1/gp_usa_x.xlsx"
 
 ```
 
-
-### (1) Bağımsız veri setine ilişkin inceleme:
+# 1:
+### Bağımsız veri setine ilişkin inceleme:
 
   Verilerin çekilirken kaynak olarak [Datacamp](datacamp.com) seçildi.
 İlk olarak veriler `gapminder_tsv` beklenen ömür değişkeni ile filtrelendi `gapminder_lifeExp`.
@@ -59,7 +58,7 @@ head(gp_usa)
 
 ```
 
-#Örneklem çekme:
+### Örneklem çekme:
 
   Analize başlamak üzere n=30 için 3 değişkenden de veriler rastgele çekildi ve bu örneklemler:
   `gp_eu_samp`, `gp_asia_samp`, `gp_usa_samp` olarak adlandırıldı.
@@ -82,7 +81,7 @@ gp_usa_samp$lifeExp <- as.numeric(gp_usa_samp$lifeExp)
  
 ```
 
-#Tanımlayıcı istatistikler ve normallik varsayımı testi:
+### Tanımlayıcı istatistikler ve normallik varsayımı testi:
 
   Özetleyici istatistikler kapsamında incelenecek her bir grup için `stat.desc` kodu kullanıldı.
   
