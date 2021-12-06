@@ -1,0 +1,68 @@
+---
+title: "Parametrik olmayan istatistiksel yöntemler ödevi (6)"
+author: "Ramazan Erduran, İlkay Şafak Baytar"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(stats)
+library(tidyverse)
+library(rstatix)
+library(ggplot2)
+gp_group_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/gp_datasets/gp_group_x.xlsx")
+
+```
+# 6:
+### Verilerin açıklaması:
+
+  Ödevimizin 1. sekmesinde elde ettiğimiz bağımsız **Gapminder** veri setinden incelemek üzere 3 kıta seçildi ve bu kıtalar arası fark olup olmadığna bakıldı:  
+  (**Amerika**, **Asya** ve **Avrupa**).
+
+```{r cars}
+gp_group_x %>% 
+  group_by(group) %>%
+  get_summary_stats(lifeExp, type = "common")
+
+ggplot(gp_group_x, aes(group, lifeExp, color= group)) + geom_boxplot()
+```
+
+### Hipotezlerin kurulması ve testin yapılması:
+  
+  Boxplot ve özetleyici istatistiklerini gördüğümüz değişkenlerimizin hipotez testleri incelendi.  
+  Bu aşamada öncekilerde de olduğu gibi hipotezlerimizi kurup bu hipotezlere ilişkin Kruskall-Wallis Testi uygulandı:  
+  H0: D~i~ = 0 (Kıtalar arası fark yoktur.)  
+  H1: D~i~ $\neq$ 0 (Kıtalar arası fark vardır.)  
+  Alpha = 0.05  
+için "**Kruskall-Wallis testi**" %5 yanılma düzeyiyle uygulanarak hipotezler test edildi:
+
+```{r kruskall, echo=FALSE}
+kruskal.test(gp_group_x$lifeExp ~ gp_group_x$group)
+```
+
+### Hipotez sonuçları:
+  
+  **Kruskall-Wallis** testinin sonucunda H0 hipotezimiz reddedildi ve kıtlar arası farklılık olduğu görüldü.  
+  Bir sonraki analizimizde ise bu farklılığın nerden geldiğini görmek için **Post-Hoc** testleri uygulanacak.  
+  
+```{r posthoc, echo=T}
+gp_group_x %>%
+  dunn_test(lifeExp~group, p.adjust.method = "bonferroni")
+
+```
+  
+### Post-Hock test sonuçları:
+  
+  Hipotezlerimiz **Krusall-Wallis** testi ile test edildi ve yorum olarak:  
+"%95 güvenle söylenebilir ki kıtalar arası farklılık vardır" yorumu yapıldı.  
+  Çoklu karşılaştırma sorunlarını ortadan kaldırmak için **"Bonferroni"** düzeltmesi ile yaptığımız **Duncann** testinin sonucunda ise:  
+  Asya ve Avrupa     ............ Fark anlamlıdır  
+  Asya ve Amerika    ............ Fark anlamlı değildir  
+  Avrupa ve Amerika  ............ Fark anlamlıdır  
+Çıktılarını kullanarak:
+"Kıtalar arası farklılığın **Avrupa'dan (`EUROPE`)** dan kaynaklandığı %95 güven düzeyiyle söylenebilir. "
+  
