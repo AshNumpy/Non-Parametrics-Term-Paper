@@ -4,7 +4,6 @@ author: "Ramazan Erduran, İlkay Şafak Baytar"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
   html_document: default
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,13 +12,13 @@ library(readr)
 library(pastecs)
 library(writexl)
 library(readxl)
-sepal_width_x <- read_excel("setosa_sepal_width_x.xlsx")
-sepal_length_x <- read_excel("setosa_sepal_length_x.xlsx")
-petal_x <- read_excel("setosa_petal_x.xlsx")
+sepal_width_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/iris_datasets/setosa_sepal_width_x.xlsx")
+sepal_length_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/iris_datasets/setosa_sepal_length_x.xlsx")
+petal_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/iris_datasets/setosa_petal_x.xlsx")
 
 ```
-
-### (2) Bağımlı veri setine ilişkin inceleme:
+# 2:
+### Bağımlı veri setine ilişkin inceleme:
 
   Verilerin çekilirken kaynak olarak [Datacamp](datacamp.com) seçildi. Veri setimizin açıklamasıyla başlayalım. Asıl kitlemiz, **Setosa**, **Versicolor** ve **Virginica** çiçek türlerinin sepal (Çanak yaprak) ve petal (Taç yaprak) verilerini içermekte idi. Biz bu verilerden **Setosa** çiçek türüne ait verileri kullandık.
   
