@@ -1,0 +1,51 @@
+---
+title: "Parametrik olmayan istatistiksel yöntemler ödevi (5)"
+author: "Ramazan Erduran, İlkay Şafak Baytar"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(dplyr)
+library(stats)
+
+sepal_length_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/iris_datasets/setosa_sepal_length_x.xlsx")
+
+sepal_width_x <- read_excel("C:/Users/lenovo/Documents/GitHub/Nonpar/iris_datasets/setosa_sepal_width_x.xlsx")
+
+```
+# 5:
+### Verilerin açıklaması:
+
+  Ödevimizin 2. sekmesinde elde ettiğimiz bağımlı **Iris** veri setinden incelemek üzere 2 değişken seçildi:  
+  ("**Sepal Uzunluğu** ve **Sepal Kalınlığı**")
+
+```{r head, echo=T}
+head(sepal_length_x)
+head(sepal_width_x)
+
+sepal_width_y <- sepal_width_x[1:20,]
+
+```
+
+### Hipotezlerin kurulması ve testin yapılması:
+
+  Bu aşamada öncekilerde de olduğu gibi hipotezlerimizi kurup bu hipotezlere ilişkin Wilcoxon Testi uygulandı:  
+  H0: D~i~ = 0 (Değişkenler arası fark yoktur.)  
+  H1: D~i~ $\neq$ 0 (Değişkenler arası fark vardır.)  
+  Alpha = 0.05  
+için "**Wilcoxon işaret sıra sayıları testi**" %5 yanılma düzeyiyle uygulanarak hipotezler test edildi:
+
+```{r hypotheses, echo=FALSE}
+wilcox.test(sepal_length_x$sepal_length,sepal_width_y$sepal_width,alternative = "two.sided", paired=T, conf.level = 0.95)
+```
+
+### Sonuçlar ve yorumlar:
+
+  İki bağımlı örnekleme ilişkin uygulanan "**Wilcoxon Testi**" sonucunda elde edilen çıktılara dayanarak;  
+  %95 Güvenle söylenebilir ki, gruplar arasında fark vardır.  
+  
